@@ -19,20 +19,21 @@ callback_path = "ASR/callbacks/LRS23/AO/EffConfCTC"
 
 # Beam Search
 beam_search = True
-tokenizer_path = "ASR/media/tokenizerbpe256.model"
-ngram_path = "ASR/media/6gram_lrs23.arpa"
+tokenizer_path = "/content/drive/MyDrive/LipVoicerCheckpoints/tokenizerbpe256.model"
+ngram_path = "/content/drive/MyDrive/LipVoicerCheckpoints/6gram_lrs23.arpa"
 ngram_offset = 100
 beam_size = 16
 ngram_alpha = 0.6
 ngram_beta = 1.0
 ngram_tmp = 1.0
 neural_config_path = "ASR/configs/LRS23/LM/GPT-Small-demo.py"
-neural_checkpoint = "checkpoints_epoch_10_step_2860.ckpt"
+neural_checkpoint = "/content/drive/MyDrive/LipVoicerCheckpoints/checkpoints_epoch_10_step_2860.ckpt"
 neural_alpha = 0.6
 neural_beta = 1.0
 
 # Model
-model = nnet.AudioEfficientConformerInterCTC(vocab_size=vocab_size, att_type=att_type, interctc_blocks=interctc_blocks)
+model = nnet.AudioEfficientConformerInterCTC(
+    vocab_size=vocab_size, att_type=att_type, interctc_blocks=interctc_blocks)
 model.compile(
     losses=nnet.CTCLoss(zero_infinity=True, assert_shorter=False),
     metrics=nnet.WordErrorRate(),
@@ -63,16 +64,16 @@ collate_fn = nnet.CollateFn(
 )
 
 training_dataset = nnet.datasets.LRS(
-                    root="/dsi/gannot-lab/datasets2/",
-                    batch_size=batch_size,
-                    collate_fn=collate_fn,
-                    version="LRS3",
-                    mode="pretrain+trainval",
-                    audio_max_length=audio_max_length,
-                    load_video=load_video,
-                    prepare=False,
-                    workers_prepare=8
-                    )
+    root="/dsi/gannot-lab/datasets2/",
+    batch_size=batch_size,
+    collate_fn=collate_fn,
+    version="LRS3",
+    mode="pretrain+trainval",
+    audio_max_length=audio_max_length,
+    load_video=load_video,
+    prepare=False,
+    workers_prepare=8
+)
 
 evaluation_dataset = [
     nnet.datasets.LRS(
@@ -84,26 +85,26 @@ evaluation_dataset = [
         load_video=load_video
     ),
 
-# training_dataset = nnet.datasets.LRS(
-#                     root="/dsi/gannot-lab/datasets2/",
-#                     batch_size=batch_size,
-#                     collate_fn=collate_fn,
-#                     version="LRS2",
-#                     mode="pretrain+train",
-#                     audio_max_length=audio_max_length,
-#                     load_video=load_video,
-#                     prepare=False,
-#                     workers_prepare=8
-#                     )
+    # training_dataset = nnet.datasets.LRS(
+    #                     root="/dsi/gannot-lab/datasets2/",
+    #                     batch_size=batch_size,
+    #                     collate_fn=collate_fn,
+    #                     version="LRS2",
+    #                     mode="pretrain+train",
+    #                     audio_max_length=audio_max_length,
+    #                     load_video=load_video,
+    #                     prepare=False,
+    #                     workers_prepare=8
+    #                     )
 
 
-# evaluation_dataset = [
-#     nnet.datasets.LRS(
-#         root="/dsi/gannot-lab/datasets2/",
-#         batch_size=batch_size,
-#         collate_fn=collate_fn,
-#         version="LRS2",
-#         mode="test",
-#         load_video=load_video
-#     ),
+    # evaluation_dataset = [
+    #     nnet.datasets.LRS(
+    #         root="/dsi/gannot-lab/datasets2/",
+    #         batch_size=batch_size,
+    #         collate_fn=collate_fn,
+    #         version="LRS2",
+    #         mode="test",
+    #         load_video=load_video
+    #     ),
 ]

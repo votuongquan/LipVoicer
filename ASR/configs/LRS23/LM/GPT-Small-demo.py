@@ -25,7 +25,7 @@ lr = 6e-5
 epochs = 10
 batch_size = 128
 accumulated_steps = 2
-tokenizer_path = "ASR/media/tokenizerbpe1024.model"
+tokenizer_path = "/content/drive/MyDrive/LipVoicerCheckpoints/tokenizerbpe1024.model"
 precision = torch.float16
 callback_path = "ASR/callbacks/LRS23/LM/GPT-Small"
 
@@ -49,7 +49,8 @@ model.compile(
 # Load Pretrained
 if pretrained:
     model.load_state_dict(
-        torch.load(pretrained_checkpoint, map_location=model.device)["model_state_dict"]
+        torch.load(pretrained_checkpoint, map_location=model.device)[
+            "model_state_dict"]
     )
 
 # Datasets
