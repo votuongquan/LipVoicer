@@ -19,15 +19,15 @@ callback_path = "ASR/callbacks/LRS23/AO/EffConfCTC"
 
 # Beam Search
 beam_search = True
-tokenizer_path = "/kaggle/input/lipvoicerdata/LipVoicerCheckpoints/tokenizerbpe256.model"
-ngram_path = "/kaggle/input/lipvoicerdata/LipVoicerCheckpoints/6gram_lrs23.arpa"
+tokenizer_path = "/content/drive/MyDrive/LipVoicerCheckpoints/tokenizerbpe256.model"
+ngram_path = "/content/drive/MyDrive/LipVoicerCheckpoints/6gram_lrs23.arpa"
 ngram_offset = 100
 beam_size = 16
 ngram_alpha = 0.6
 ngram_beta = 1.0
 ngram_tmp = 1.0
 neural_config_path = "ASR/configs/LRS23/LM/GPT-Small-demo.py"
-neural_checkpoint = "/kaggle/input/lipvoicerdata/LipVoicerCheckpoints/checkpoints_epoch_10_step_2860.ckpt"
+neural_checkpoint = "/content/drive/MyDrive/LipVoicerCheckpoints/checkpoints_epoch_10_step_2860.ckpt"
 neural_alpha = 0.6
 neural_beta = 1.0
 

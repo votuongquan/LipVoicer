@@ -259,7 +259,7 @@ def generate(
     json_config = json.loads(data)
     h = AttrDict(json_config)
     vocoder = Vocoder(h).cuda()
-    checkpoint_file = '/kaggle/input/lipvoicerdata/LipVoicerCheckpoints/g_02400000'
+    checkpoint_file = '/content/drive/MyDrive/LipVoicerCheckpoints/g_02400000'
     state_dict_g = vocoder_utils.load_checkpoint(checkpoint_file, 'cuda')
     vocoder.load_state_dict(state_dict_g['generator'])
     vocoder.eval()

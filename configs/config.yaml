@@ -45,13 +45,13 @@ train: # Not used in generate.py
 
 generate:
   name: LRS3
-  ckpt_path: /kaggle/input/lipvoicerdata/LipVoicerCheckpoints/1000000_lrs3.pkl
+  ckpt_path: /content/drive/MyDrive/LipVoicerCheckpoints/1000000_lrs3.pkl
   n_samples: 3 # Number of utterances from test dataset to be generated
-  video_path: /kaggle/input/lipvoicerdata/LipVoicerInferenceVideos/lrs3_infer1.webm # generate audio for a given silent video file
+  video_path: /content/drive/MyDrive/LipVoicerInferenceVideos/lrs3_infer1.webm # generate audio for a given silent video file
   w_video: 2 # w1 in the paper
   w_asr: 1.5 # w2 in the paper
   asr_start: 270 # t_asr
-  save_dir: kaggle/working/LipVoicer/Results # where to save the generated audio
+  save_dir: /content/LipVoicer/Result # where to save the generated audio
   lipread_text_dir: null # directory with predicted text for generating test samples of benchmark dataset
 
 distributed:
